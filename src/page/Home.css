@@ -1,0 +1,25 @@
+.home-layout {
+  display: flex;
+  flex-direction: column; /* default: mobile */
+  gap: 20px;
+  padding: 16px;
+}
+
+/* Quando la viewport è almeno 768px (tablet/desktop), affianca */
+@media (min-width: 768px) {
+  .home-layout {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .form-container {
+    flex: 1;
+    max-width: 50%;
+  }
+
+  .box-container {
+    flex: 1;
+    max-width: 50%;
+  }
+}

@@ -1,0 +1,43 @@
+.box-container {
+  height: auto;            /* Rimuove il 90%, lascia che si adatti al contenuto */
+  margin: 20px;
+  padding: 16px;
+  border-radius: 14px;
+  background-color: #152E44;
+  max-width: 500px;        /* Se vuoi limitarne anche la larghezza */
+}
+
+.box-header {
+  display: flex;
+  align-items: center;
+}
+
+.box-image {
+  width: 20%;
+  max-width: 300px;
+  margin: 17px;
+  height: auto;
+  object-fit: contain;
+}
+
+.box-title {
+  color: #fff;
+  margin: 10px 0 0 0; /* ↑ aggiunto margin-top */
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.box-text-group {
+  margin-top: 12px; /* o quanto vuoi per abbassarlo */
+}
+
+.box-subtitle {
+  font-size: 12;
+  color: lightgray;
+  font-weight: 300;
+}
+
+.box-body {
+  display: flex;
+  flex-direction: row;
+}

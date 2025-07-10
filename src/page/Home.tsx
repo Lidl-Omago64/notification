@@ -34,7 +34,10 @@ function Home() {
     await OneSignal.login("1234")    
     console.log("QUI")
     const playerId = OneSignal.User;
-    console.log(playerId)
+    console.log("ISCRIZIONE ->")
+    console.log(playerId.externalId)
+
+    
     
     }
 

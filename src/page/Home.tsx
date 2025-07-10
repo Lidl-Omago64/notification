@@ -115,7 +115,6 @@ function Home() {
 
   return (
     <div>
-      <h1>Update3</h1>
       <DashBorad />
       <div className="home-layout">
         <Box params={boxParams} />

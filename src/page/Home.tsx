@@ -26,7 +26,6 @@ function Home() {
       OneSignal.init({
       appId: "88084c21-94ef-4961-ba68-e65bbac74973",
       safari_web_id: "web.onesignal.auto.0860f031-816f-4b4e-9724-08fcd0b320db",
-      allowLocalhostAsSecureOrigin: true,
     });
   
   }, [])

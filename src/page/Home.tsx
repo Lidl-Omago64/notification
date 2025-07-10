@@ -61,6 +61,7 @@ function Home() {
               // Mostra il slidedown per richiedere il permesso
               if (OneSignal.Slidedown) {
                 OneSignal.Slidedown.promptPush();
+                console.log("EFFETTUATO")
               } else {
                 // Fallback se Slidedown non è disponibile
                 OneSignal.Notifications.requestPermission();

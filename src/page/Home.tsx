@@ -32,7 +32,10 @@ function Home() {
         });
 
         console.log("OneSignal inizializzato");
-
+        
+        // Piccolo delay per permettere a OneSignal di completare l'inizializzazione
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
         // Verifica se OneSignal è già inizializzato
         if (OneSignal.User) {
           // Effettua il login con un ID univoco dell'utente
@@ -53,22 +56,50 @@ function Home() {
           OneSignal.setConsentGiven(true);
           
           // Verifica se le notifiche sono supportate
-          if (OneSignal.Notifications?.permission) {
-            console.log("Permessi notifiche:", OneSignal.Notifications.permission);
+          console.log("OneSignal.Notifications:", OneSignal.Notifications);
+          
+          if (OneSignal.Notifications) {
+            console.log("Notifications disponibili");
             
-            // Se non sono già concessi, mostra il prompt
-            if (OneSignal.Notifications.permission) {
+            // Verifica il permesso attuale (boolean)
+            const currentPermission = OneSignal.Notifications.permission;
+            console.log("Permessi notifiche (boolean):", currentPermission);
+            
+            // Se il permesso è false (non concesso), mostra il prompt
+            if (currentPermission === false) {
+              console.log("Permesso non concesso (false), mostrando prompt");
+              
               // Mostra il slidedown per richiedere il permesso
               if (OneSignal.Slidedown) {
                 OneSignal.Slidedown.promptPush();
-                console.log("EFFETTUATO")
+                console.log("SLIDEDOWN EFFETTUATO");
               } else {
+                console.log("Slidedown non disponibile, usando requestPermission");
                 // Fallback se Slidedown non è disponibile
                 OneSignal.Notifications.requestPermission();
-                console.log("NON EFFETTUATO")
+                console.log("REQUEST PERMISSION EFFETTUATO");
               }
-            }else console.log("PERMISSION NO")
-          } else console.log("PERM NO")
+            } else if (currentPermission === true) {
+              console.log("Permesso già concesso (true)");
+            } else {
+              console.log("Permesso in stato indeterminato:", currentPermission);
+              // Prova comunque a mostrare il prompt
+              if (OneSignal.Slidedown) {
+                OneSignal.Slidedown.promptPush();
+                console.log("SLIDEDOWN EFFETTUATO (stato indeterminato)");
+              }
+            }
+          } else {
+            console.log("OneSignal.Notifications non disponibile");
+            
+            // Prova comunque con il Slidedown
+            if (OneSignal.Slidedown) {
+              console.log("Tentativo con Slidedown diretto");
+              OneSignal.Slidedown.promptPush();
+            } else {
+              console.log("Nessun metodo di prompt disponibile");
+            }
+          }
 
         } else {
           console.error("OneSignal.User non è disponibile");

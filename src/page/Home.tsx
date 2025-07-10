@@ -34,6 +34,7 @@ function Home() {
 
   return (
     <div>
+      <h1>Update</h1>
       <DashBorad />
       <div className="home-layout">
         <Box params={boxParams} />

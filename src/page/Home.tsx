@@ -1,14 +1,13 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import useUrlParams from "../hooks/userUrlParams";
 import DashBorad from "../components/DashBoard";
 import Box from "../components/Box";
 import Form from "../components/Form";
 import "./Home.css";
-import Logo from "../assets/energyCo-2xlogo.png"
+import OneSignal from "react-onesignal";
 
 function Home() {
   const params = useUrlParams();
-  const [permessoNotifiche, setPermessoNotifiche] = useState(Notification.permission);
 
   const boxParams = {
     consumo: params.consumo,
@@ -23,16 +22,15 @@ function Home() {
   };
 
 
-  const inviaNotifica = () => {
-    if (Notification.permission === "granted") {
-      new Notification("Test manuale", {
-        body: "Questa è una notifica di test.",
-        icon: "/logo.png",
-      });
-    } else {
-      alert("Le notifiche non sono attive.");
-    }
-  };
+  useEffect(() => {
+      OneSignal.init({
+      appId: "88084c21-94ef-4961-ba68-e65bbac74973",
+      safari_web_id: "web.onesignal.auto.0860f031-816f-4b4e-9724-08fcd0b320db",
+      allowLocalhostAsSecureOrigin: true,
+    });
+  
+  }, [])
+
 
   return (
     <div>
@@ -43,14 +41,9 @@ function Home() {
           <Form params={formParams} />
         </div>
       </div>
-
-
-      {/* Pulsante per inviarne una manuale */}
-      <button onClick={inviaNotifica}>
-        Invia Notifica
-      </button>
     </div>
   );
 }
 
 export default Home;
+

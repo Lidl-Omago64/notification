@@ -40,8 +40,8 @@ function Box({ params }: any) {
 
             </div>
             <div className="box-body">
-                <InfoBox color={"#183A5E"} par={params.consumo} />
-                <InfoBox color={"#58BEB9"} par={params.immessa} />
+                <InfoBox color={"#183A5E"} par={params.consumo} title={"Consumo"} />
+                <InfoBox color={"#58BEB9"} par={params.immessa} title={"Immessa"}/>
             </div>
         </div>
     )

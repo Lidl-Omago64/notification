@@ -8,7 +8,7 @@ function Form({params}:any) {
   return (
     <div>
         <TextLabel triggerName={"Potenza Trigger"} value={params.potenza_trigger + " Kw"} colorRed={isPotenza}/>
-        <TextLabel triggerName={"Data Trigger"} value={params.data}/>
+        <TextLabel triggerName={"Data Trigger"} value={params.data + " "}/>
         <TextLabel triggerName={"Potenza Attuale"} value={params.potenza_attuale + " Kw"}/>
         <TextLabel triggerName={"Durata Trigger"} value={params.durata + " secondi"}/>
     </div>

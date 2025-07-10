@@ -2,7 +2,6 @@ import Attenzione from "../assets/1187737.png"
 import Guadagno from "../assets/7518799.png"
 import Errore from "../assets/4063871.png"
 import InfoBox from "./InfoBox";
-import Font from "react-font";
 import { useState,useEffect } from "react";
 import "./Box.css"
 function Box({ params }: any) {
@@ -32,10 +31,9 @@ function Box({ params }: any) {
             <div className="box-header">
                 <img src={img} className="box-image" />
                 <div className="box-text-group">
-                    <Font family="Inter">
                         <p className="box-title">{title}</p>
                         <p className="box-subtitle">{subTitle}</p>
-                    </Font>
+                    
                 </div>
 
             </div>

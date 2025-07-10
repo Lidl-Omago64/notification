@@ -13,7 +13,6 @@
     "onesignal-cordova-plugin": "^5.2.15",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-font": "^1.2.1",
     "react-onesignal": "^3.2.3",
     "react-router-dom": "^7.6.3",
     "zod": "^3.25.75"

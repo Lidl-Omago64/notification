@@ -24,17 +24,20 @@ function Home() {
 
   useEffect(() => {
     console.log(OneSignal.Slidedown)
-    setupOneSignal();
+    
     async function setupOneSignal() {
       OneSignal.init({
       appId: "9aae352d-573e-4ab8-8838-4c645fcb902b",
       safari_web_id: "web.onesignal.auto.4bf12d4e-2e1c-4e2f-be7e-e4e315c9ca64",
     });
 
-   console.log(OneSignal.login);
-    
+    OneSignal.login("1234")    
+    const playerId = OneSignal.User;
+    console.log(playerId)
     
     }
+
+    setupOneSignal();
   }, [])
 
 

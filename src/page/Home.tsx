@@ -26,12 +26,13 @@ function Home() {
     console.log(OneSignal.Slidedown)
     
     async function setupOneSignal() {
-      OneSignal.init({
+      await OneSignal.init({
       appId: "9aae352d-573e-4ab8-8838-4c645fcb902b",
       safari_web_id: "web.onesignal.auto.4bf12d4e-2e1c-4e2f-be7e-e4e315c9ca64",
     });
 
-    OneSignal.login("1234")    
+    await OneSignal.login("1234")    
+    console.log("QUI")
     const playerId = OneSignal.User;
     console.log(playerId)
     

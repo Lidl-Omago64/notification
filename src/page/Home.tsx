@@ -65,6 +65,7 @@ function Home() {
               } else {
                 // Fallback se Slidedown non è disponibile
                 OneSignal.Notifications.requestPermission();
+                console.log("NON EFFETTUATO")
               }
             }
           }

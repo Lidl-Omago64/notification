@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@pusher/push-notifications-web": "^1.1.0",
     "onesignal-cordova-plugin": "^5.2.15",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

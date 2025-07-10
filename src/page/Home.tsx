@@ -4,7 +4,8 @@ import DashBorad from "../components/DashBoard";
 import Box from "../components/Box";
 import Form from "../components/Form";
 import "./Home.css";
-import OneSignal from "react-onesignal";
+<script src="https://js.pusher.com/beams/2.1.0/push-notifications-cdn.js"></script>
+import PushNotifications from "@pusher/push-notifications-web";
 
 function Home() {
   const params = useUrlParams();
@@ -21,15 +22,17 @@ function Home() {
     durata: params.durata_trigger?.toString(),
   };
 
-
   useEffect(() => {
-      OneSignal.init({
-      appId: "88084c21-94ef-4961-ba68-e65bbac74973",
-      safari_web_id: "web.onesignal.auto.0860f031-816f-4b4e-9724-08fcd0b320db",
+    const beamsClient = new PushNotifications.Client({
+      instanceId: "058a6cdc218b04d75b72", // <--- inserisci qui il tuo Instance ID Pusher Beams
     });
-  
-  }, [])
 
+    beamsClient
+      .start()
+      .then(() => beamsClient.addDeviceInterest("general")) // sottoscrive a interesse "general"
+      .then(() => console.log("Iscritto a notifiche 'general'"))
+      .catch(console.error);
+  }, []);
 
   return (
     <div>
@@ -45,4 +48,3 @@ function Home() {
 }
 
 export default Home;
-

@@ -23,9 +23,10 @@ function Home() {
 
 
   useEffect(() => {
+    
       OneSignal.init({
-      appId: "88084c21-94ef-4961-ba68-e65bbac74973",
-      safari_web_id: "web.onesignal.auto.0860f031-816f-4b4e-9724-08fcd0b320db",
+      appId: "12ea929c-7efe-499e-b660-761a1ba30100",
+      safari_web_id: "web.onesignal.auto.1bb493cc-6f2b-4253-90e1-02d85a4b9e78",
     });
   
   }, [])

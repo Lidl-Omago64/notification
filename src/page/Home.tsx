@@ -5,7 +5,6 @@ import Box from "../components/Box";
 import Form from "../components/Form";
 import "./Home.css";
 import OneSignal from "react-onesignal";
-import OneSignalDeferred from "react-onesignal"
 
 function Home() {
   const params = useUrlParams();

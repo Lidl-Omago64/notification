@@ -67,7 +67,7 @@ function Home() {
                 OneSignal.Notifications.requestPermission();
                 console.log("NON EFFETTUATO")
               }
-            }
+            }else console.log("PERMISSION NO")
           }
 
         } else {

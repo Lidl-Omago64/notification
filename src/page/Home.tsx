@@ -35,7 +35,7 @@ function Home() {
     console.log("QUI")
     const playerId = OneSignal.User;
     console.log("ISCRIZIONE ->")
-    console.log(playerId.externalId)
+    console.log(playerId.externalId, playerId.onesignalId)
 
     
     

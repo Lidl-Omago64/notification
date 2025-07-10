@@ -8,12 +8,12 @@ import OneSignal from "react-onesignal";
 
 function Home() {
   const params = useUrlParams();
-
+  
   const boxParams = {
     consumo: params.consumo,
     immessa: params.immessa,
   };
-
+  
   const formParams = {
     data: params.data_trigger?.toString(),
     potenza_trigger: params.potenza_trigger?.toString(),
@@ -21,31 +21,64 @@ function Home() {
     durata: params.durata_trigger?.toString(),
   };
 
-
   useEffect(() => {
-    console.log(OneSignal.Slidedown)
-    
     async function setupOneSignal() {
-      await OneSignal.init({
-      appId: "9aae352d-573e-4ab8-8838-4c645fcb902b",
-      safari_web_id: "web.onesignal.auto.4bf12d4e-2e1c-4e2f-be7e-e4e315c9ca64",
-    });
+      try {
+        // Inizializza OneSignal
+        await OneSignal.init({
+          appId: "9aae352d-573e-4ab8-8838-4c645fcb902b",
+          safari_web_id: "web.onesignal.auto.4bf12d4e-2e1c-4e2f-be7e-e4e315c9ca64",
+          allowLocalhostAsSecureOrigin: true, // Solo per sviluppo
+        });
 
-    await OneSignal.login("1234")    
-    console.log("QUI")
-    const playerId = OneSignal.User;
-    console.log("ISCRIZIONE ->");
-    console.log(playerId.externalId, playerId.onesignalId)
-    console.log(playerId.PushSubscription.id);
-    
+        console.log("OneSignal inizializzato");
 
-    
-    
+        // Verifica se OneSignal è già inizializzato
+        if (OneSignal.User) {
+          // Effettua il login con un ID univoco dell'utente
+          // Sostituisci "1234" con un ID univoco reale dell'utente
+          const userExternalId = "user_" + Date.now(); // Esempio di ID univoco
+          await OneSignal.login(userExternalId);
+          
+          console.log("Login effettuato con ID:", userExternalId);
+          
+          // Ottieni informazioni sull'utente
+          const user = OneSignal.User;
+          console.log("Utente OneSignal:", {
+            externalId: user.externalId,
+            onesignalId: user.onesignalId
+          });
+
+          // Imposta il consenso per le notifiche
+          OneSignal.setConsentGiven(true);
+          
+          // Verifica se le notifiche sono supportate
+          if (OneSignal.Notifications?.permission) {
+            console.log("Permessi notifiche:", OneSignal.Notifications.permission);
+            
+            // Se non sono già concessi, mostra il prompt
+            if (OneSignal.Notifications.permission) {
+              // Mostra il slidedown per richiedere il permesso
+              if (OneSignal.Slidedown) {
+                OneSignal.Slidedown.promptPush();
+              } else {
+                // Fallback se Slidedown non è disponibile
+                OneSignal.Notifications.requestPermission();
+              }
+            }
+          }
+
+        } else {
+          console.error("OneSignal.User non è disponibile");
+        }
+
+      } catch (error) {
+        console.error("Errore durante l'inizializzazione di OneSignal:", error);
+      }
     }
 
     setupOneSignal();
-  }, [])
-
+  }, []);
 
   return (
     <div>
@@ -62,4 +95,3 @@ function Home() {
 }
 
 export default Home;
-

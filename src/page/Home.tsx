@@ -68,7 +68,7 @@ function Home() {
                 console.log("NON EFFETTUATO")
               }
             }else console.log("PERMISSION NO")
-          }
+          } else console.log("PERM NO")
 
         } else {
           console.error("OneSignal.User non è disponibile");

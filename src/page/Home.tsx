@@ -25,8 +25,8 @@ function Home() {
   useEffect(() => {
     
       OneSignal.init({
-      appId: "12ea929c-7efe-499e-b660-761a1ba30100",
-      safari_web_id: "web.onesignal.auto.1bb493cc-6f2b-4253-90e1-02d85a4b9e78",
+      appId: "9aae352d-573e-4ab8-8838-4c645fcb902b",
+      safari_web_id: "web.onesignal.auto.4bf12d4e-2e1c-4e2f-be7e-e4e315c9ca64",
     });
   
   }, [])
@@ -34,7 +34,7 @@ function Home() {
 
   return (
     <div>
-      <h1>Update</h1>
+      <h1>Update1</h1>
       <DashBorad />
       <div className="home-layout">
         <Box params={boxParams} />
